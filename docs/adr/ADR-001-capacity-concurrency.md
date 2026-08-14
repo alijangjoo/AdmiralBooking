@@ -8,10 +8,11 @@ Two bookings may compete for the last voyage units. Application checks alone can
 
 Optimistic concurrency on the Voyage aggregate using an explicit `Version` column (EF concurrency token), plus:
 
+- Booking `Version` is also an EF concurrency token (same-booking races)
 - Check constraint `ReservedCapacity <= TotalCapacity`
 - Unique filtered index on active reservations `(BookingId, VoyageId)`
 
-The Voyage aggregate remains the owner of the capacity invariant. `CapacityReservation` is an entity inside that aggregate.
+The Voyage aggregate remains the owner of the capacity invariant. `CapacityReservation` is an entity inside that aggregate. Optional HTTP `expectedVersion` is the Booking version; it does not protect Voyage occupancy.
 
 ## Alternatives considered
 

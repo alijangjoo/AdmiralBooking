@@ -22,7 +22,7 @@ public class BookingConfig : IEntityTypeConfiguration<Booking>
         builder.Property(x => x.Status).HasConversion<int>().IsRequired();
         builder.Property(x => x.CapacityReservationId);
         builder.Property(x => x.ConfirmedAt);
-        builder.Property(x => x.Version).IsRequired();
+        builder.Property(x => x.Version).IsConcurrencyToken().IsRequired();
         builder.Property(x => x.CreatedAt).IsRequired();
 
         builder.HasIndex(x => x.VoyageId).HasDatabaseName("IX_Bookings_VoyageId");

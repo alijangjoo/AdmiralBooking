@@ -1,16 +1,18 @@
-@POST http://localhost:5279/api/dev/seed
+@baseUrl = http://localhost:5279
+@idempotencyKey = 665886cf-e957-4555-b4ca-ad7b6baab8e5
+@correlationId = f1382b1c-4525-4fd5-87cc-90803693a898
+
+### Seed sample voyage + bookings (replace ids below from the response)
+POST {{baseUrl}}/api/dev/seed
 Content-Type: application/json
 
 {
   "voyageCapacity": 2
 }
 
-### Confirm booking A (replace ids from seed)
+### Confirm booking A
 @bookingAId = 00000000-0000-0000-0000-000000000000
-@idempotencyKey = 665886cf-e957-4555-b4ca-ad7b6baab8e5
-@correlationId = f1382b1c-4525-4fd5-87cc-90803693a898
-
-POST http://localhost:5279/api/bookings/{{bookingAId}}/confirm
+POST {{baseUrl}}/api/bookings/{{bookingAId}}/confirm
 Idempotency-Key: {{idempotencyKey}}
 X-Correlation-ID: {{correlationId}}
 Content-Type: application/json
@@ -19,27 +21,45 @@ Content-Type: application/json
   "expectedVersion": null
 }
 
-### Replay the same confirmation (idempotent)
-POST http://localhost:5279/api/bookings/{{bookingAId}}/confirm
+### Scenario B — replay the same confirmation (idempotent)
+POST {{baseUrl}}/api/bookings/{{bookingAId}}/confirm
 Idempotency-Key: {{idempotencyKey}}
 X-Correlation-ID: {{correlationId}}
 Content-Type: application/json
 
 {}
 
-### Payload conflict: same key, different booking
+### Scenario C — same Idempotency-Key, different booking
 @bookingBId = 00000000-0000-0000-0000-000000000001
-POST http://localhost:5279/api/bookings/{{bookingBId}}/confirm
+POST {{baseUrl}}/api/bookings/{{bookingBId}}/confirm
 Idempotency-Key: {{idempotencyKey}}
+X-Correlation-ID: {{correlationId}}
+Content-Type: application/json
+
+{}
+
+### Scenario A — confirm booking B with its own key (run in parallel with booking A)
+POST {{baseUrl}}/api/bookings/{{bookingBId}}/confirm
+Idempotency-Key: 7c1a2b3d-e4f5-4678-9abc-def012345678
+X-Correlation-ID: {{correlationId}}
+Content-Type: application/json
+
+{}
+
+### Scenario D — voyage already closed for booking
+@closedVoyageBookingId = 00000000-0000-0000-0000-000000000002
+POST {{baseUrl}}/api/bookings/{{closedVoyageBookingId}}/confirm
+Idempotency-Key: 11111111-2222-3333-4444-555555555555
+X-Correlation-ID: {{correlationId}}
 Content-Type: application/json
 
 {}
 
 ### Get booking
-GET http://localhost:5279/api/bookings/{{bookingAId}}
+GET {{baseUrl}}/api/bookings/{{bookingAId}}
 
-### Process outbox (after setting Outbox:SimulatePublishFailure)
-POST http://localhost:5279/api/dev/outbox/process
+### Scenario E — process outbox (set Outbox:SimulatePublishFailure to leave Pending, then set false and process again)
+POST {{baseUrl}}/api/dev/outbox/process
 
 ### Health
-GET http://localhost:5279/health
+GET {{baseUrl}}/health

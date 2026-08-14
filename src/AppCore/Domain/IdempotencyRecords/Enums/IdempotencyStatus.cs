@@ -2,7 +2,8 @@ namespace Admiral.Booking.AppCore.Domain.IdempotencyRecords.Enums;
 
 public enum IdempotencyStatus
 {
-    Started = 0,
-    Completed = 1,
-    Failed = 2
+    Unknown = 0,
+    Started = 1,
+    Completed = 2,
+    Failed = 3
 }

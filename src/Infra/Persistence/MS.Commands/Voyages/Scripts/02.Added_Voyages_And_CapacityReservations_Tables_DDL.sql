@@ -35,6 +35,6 @@ BEGIN
 
     CREATE UNIQUE INDEX UX_CapacityReservations_Booking_Voyage_Active
         ON dbo.CapacityReservations (BookingId, VoyageId)
-        WHERE Status = 0;
+        WHERE Status = 1;
 END
 GO

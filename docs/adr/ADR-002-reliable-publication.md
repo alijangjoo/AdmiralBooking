@@ -16,4 +16,4 @@ The confirmation transaction writes business state and an `OutboxMessages` row t
 
 ## Delivery guarantee and duplicate-handling consequences
 
-Guarantee is **at-least-once**. Consumers must be idempotent. This implementation stores `InboxMessages` keyed by integration-event id and ignores duplicates. Downstream effects are counted only for the first successful consume. Event contracts are versioned as `booking.confirmed.v1` and are independent of EF entities.
+Guarantee is **at-least-once**. Consumers must be idempotent. This implementation stores `InboxMessages` keyed by integration-event id and ignores duplicates. Downstream effects are counted only for the first successful consume. Calling the outbox processor twice after a successful publish is not a redelivery; a real redelivery is the same `EventId` delivered again. Event contracts are versioned as `booking.confirmed.v1` and are independent of EF entities.

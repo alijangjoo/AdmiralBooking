@@ -15,9 +15,7 @@ public class OutboxMessage : AggregateRoot<Guid>
     public DateTimeOffset? PublishedAt { get; private set; }
     public DateTimeOffset? NextAttemptAt { get; private set; }
 
-    private OutboxMessage()
-    {
-    }
+    private OutboxMessage() { }
 
     public static OutboxMessage Create(Guid id, string eventType, string payload, Guid deduplicationKey)
         => new()

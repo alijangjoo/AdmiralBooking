@@ -2,7 +2,8 @@ namespace Admiral.Booking.AppCore.Domain.Voyages.Enums;
 
 public enum CapacityReservationStatus
 {
-    Active = 0,
-    Released = 1,
-    Consumed = 2
+    Unknown = 0,
+    Active = 1,
+    Released = 2,
+    Consumed = 3
 }

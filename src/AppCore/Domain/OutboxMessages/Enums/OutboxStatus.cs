@@ -2,7 +2,8 @@ namespace Admiral.Booking.AppCore.Domain.OutboxMessages.Enums;
 
 public enum OutboxStatus
 {
-    Pending = 0,
-    Published = 1,
-    Failed = 2
+    Unknown = 0,
+    Pending = 1,
+    Published = 2,
+    Failed = 3
 }

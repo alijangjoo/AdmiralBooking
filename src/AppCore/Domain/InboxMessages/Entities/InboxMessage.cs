@@ -7,9 +7,7 @@ public class InboxMessage : AggregateRoot<Guid>
     public string ConsumerName { get; private set; } = string.Empty;
     public DateTimeOffset ProcessedAt { get; private set; }
 
-    private InboxMessage()
-    {
-    }
+    private InboxMessage() { }
 
     public static InboxMessage Create(Guid messageId, string consumerName)
         => new()

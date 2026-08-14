@@ -18,9 +18,7 @@ public class Booking : AggregateRoot<Guid>
     public int Version { get; private set; }
     public DateTimeOffset CreatedAt { get; private set; }
 
-    private Booking()
-    {
-    }
+    private Booking() { }
 
     public static Booking Create(Guid id, Guid customerId, Guid voyageId, ContainerUnits requestedUnits)
     {

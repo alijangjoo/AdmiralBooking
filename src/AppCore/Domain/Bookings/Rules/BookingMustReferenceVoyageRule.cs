@@ -1,7 +1,6 @@
 namespace Admiral.Booking.AppCore.Domain.Bookings.Rules;
 
 using Admiral.Booking.AppCore.Domain.Base.Rules;
-using Admiral.Booking.AppCore.Domain.Bookings.Enums;
 
 public sealed class BookingMustReferenceVoyageRule(Guid voyageId) : BusinessRule
 {

@@ -206,7 +206,7 @@ namespace Admiral.Booking.Infra.Persistence.MS.Commands.Migrations
                     b.HasIndex("BookingId", "VoyageId")
                         .IsUnique()
                         .HasDatabaseName("UX_CapacityReservations_Booking_Voyage_Active")
-                        .HasFilter("[Status] = 0");
+                        .HasFilter("[Status] = 1");
 
                     b.ToTable("CapacityReservations", (string)null);
                 });

@@ -2,8 +2,9 @@ namespace Admiral.Booking.AppCore.Domain.Voyages.Enums;
 
 public enum VoyageStatus
 {
-    OpenForBooking = 0,
-    ClosedForBooking = 1,
-    Departed = 2,
-    Cancelled = 3
+    Unknown = 0,
+    OpenForBooking = 1,
+    ClosedForBooking = 2,
+    Departed = 3,
+    Cancelled = 4
 }

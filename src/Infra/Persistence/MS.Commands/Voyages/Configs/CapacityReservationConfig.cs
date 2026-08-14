@@ -22,7 +22,7 @@ public class CapacityReservationConfig : IEntityTypeConfiguration<CapacityReserv
 
         builder.HasIndex(x => new { x.BookingId, x.VoyageId })
             .IsUnique()
-            .HasFilter("[Status] = 0")
+            .HasFilter("[Status] = 1")
             .HasDatabaseName("UX_CapacityReservations_Booking_Voyage_Active");
     }
 }

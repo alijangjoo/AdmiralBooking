@@ -12,9 +12,7 @@ public class CapacityReservation : Entity<Guid>
     public CapacityReservationStatus Status { get; private set; }
     public DateTimeOffset CreatedAt { get; private set; }
 
-    private CapacityReservation()
-    {
-    }
+    private CapacityReservation() { }
 
     internal static CapacityReservation Create(Guid id, Guid voyageId, Guid bookingId, ContainerUnits reservedUnits)
         => new()

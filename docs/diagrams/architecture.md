@@ -35,4 +35,4 @@ flowchart LR
   OX --> SQL
 ```
 
-Deployment boundary: one process. Database boundary: one SQL Server database (command and query connections may be the same). Module boundary: folders and aggregates, not network calls.
+Deployment boundary: one process. Database boundary: one SQL Server database (command and query connections may be the same). Module boundary: folders and aggregates, not network calls. Domain events stay inside the process; only `booking.confirmed.v1` is published from the outbox.

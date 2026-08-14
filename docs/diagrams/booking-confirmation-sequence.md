@@ -26,16 +26,34 @@ sequenceDiagram
     H->>S: Confirm(booking, voyage)
     S->>B: StartConfirmation
     S->>V: ReserveCapacity
-    S->>B: AttachCapacityReservation / Confirm
-    H->>O: insert BookingConfirmed v1
-    H->>I: insert completed result
-    H->>H: SaveChanges one transaction
-    alt concurrency conflict
-      H-->>C: 409 CONCURRENCY_CONFLICT
-    else success
-      H-->>C: 200 Confirmed
-      P->>O: read pending
-      P->>D: publish at-least-once
+    alt voyage closed or insufficient capacity
+      V-->>S: domain rejection
+      S->>B: AbortConfirmation
+      H-->>C: 409 VOYAGE_NOT_OPEN / INSUFFICIENT_CAPACITY
+    else reserved
+      S->>B: AttachCapacityReservation / Confirm
+      S->>V: ConsumeReservation
+      H->>O: insert booking.confirmed.v1
+      H->>I: insert completed result
+      H->>H: SaveChanges one transaction
+      alt concurrency conflict
+        H-->>C: 409 CONCURRENCY_CONFLICT
+      else success
+        H-->>C: 200 Confirmed
+        P->>O: read pending
+        alt publish throws
+          P->>O: remain Pending, log, retry later
+        else published
+          P->>D: deliver EventId
+          alt inbox already has EventId
+            D-->>P: ignore, no second downstream effect
+          else first delivery
+            D->>D: record inbox + one downstream effect
+          end
+        end
+      end
     end
   end
 ```
+
+Domain events stay on the aggregates. Only `booking.confirmed.v1` is written to the outbox and delivered at-least-once.

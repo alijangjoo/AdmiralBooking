@@ -24,9 +24,7 @@ public class Voyage : AggregateRoot<Guid>
 
     public int RemainingCapacity => TotalCapacity.Value - ReservedCapacity.Value;
 
-    private Voyage()
-    {
-    }
+    private Voyage() { }
 
     public static Voyage Create(
         Guid id,
