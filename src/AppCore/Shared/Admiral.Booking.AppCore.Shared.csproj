@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Admiral.Booking.AppCore.Shared</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.2.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Infra\Persistence\Base\Admiral.Booking.Infra.Persistence.Base.csproj" />
+    <ProjectReference Include="..\Domain\Admiral.Booking.AppCore.Domain.csproj" />
+  </ItemGroup>
+</Project>

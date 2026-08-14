@@ -1,0 +1,27 @@
+<Solution>
+  <Folder Name="/src/" />
+  <Folder Name="/src/AppCore/">
+    <Project Path="src/AppCore/AppServices/Admiral.Booking.AppCore.AppServices.csproj" />
+    <Project Path="src/AppCore/Domain/Admiral.Booking.AppCore.Domain.csproj" />
+    <Project Path="src/AppCore/DomainServices/Admiral.Booking.AppCore.DomainServices.csproj" />
+    <Project Path="src/AppCore/Shared/Admiral.Booking.AppCore.Shared.csproj" />
+  </Folder>
+  <Folder Name="/src/Endpoints/">
+    <Project Path="src/Endpoints/Api/Admiral.Booking.Endpoints.Api.csproj" />
+  </Folder>
+  <Folder Name="/src/Endpoints/Base/">
+    <Project Path="src/Endpoints/Base/Admiral.Booking.Endpoints.Base.csproj" />
+  </Folder>
+  <Folder Name="/src/Infra/" />
+  <Folder Name="/src/Infra/Persistence/">
+    <Project Path="src/Infra/Persistence/MS.Commands/Admiral.Booking.Infra.Persistence.MS.Commands.csproj" />
+    <Project Path="src/Infra/Persistence/MS.Queries/Admiral.Booking.Infra.Persistence.MS.Queries.csproj" />
+  </Folder>
+  <Folder Name="/src/Infra/Persistence/Base/">
+    <Project Path="src/Infra/Persistence/Base/Admiral.Booking.Infra.Persistence.Base.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Admiral.Booking.Tests.Integration/Admiral.Booking.Tests.Integration.csproj" />
+    <Project Path="tests/Admiral.Booking.Tests.Unit/Admiral.Booking.Tests.Unit.csproj" />
+  </Folder>
+</Solution>

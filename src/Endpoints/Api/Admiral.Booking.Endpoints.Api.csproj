@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <RootNamespace>Admiral.Booking.Endpoints.Api</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyModel" Version="8.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="8.0.11" />
+    <PackageReference Include="Scrutor" Version="6.1.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="8.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\AppCore\AppServices\Admiral.Booking.AppCore.AppServices.csproj" />
+    <ProjectReference Include="..\..\AppCore\DomainServices\Admiral.Booking.AppCore.DomainServices.csproj" />
+    <ProjectReference Include="..\..\Infra\Persistence\MS.Commands\Admiral.Booking.Infra.Persistence.MS.Commands.csproj" />
+    <ProjectReference Include="..\..\Infra\Persistence\MS.Queries\Admiral.Booking.Infra.Persistence.MS.Queries.csproj" />
+    <ProjectReference Include="..\Base\Admiral.Booking.Endpoints.Base.csproj" />
+  </ItemGroup>
+</Project>

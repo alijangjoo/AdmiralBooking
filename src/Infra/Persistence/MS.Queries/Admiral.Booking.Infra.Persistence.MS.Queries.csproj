@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Admiral.Booking.Infra.Persistence.MS.Queries</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AppCore\Shared\Admiral.Booking.AppCore.Shared.csproj" />
+    <ProjectReference Include="..\Base\Admiral.Booking.Infra.Persistence.Base.csproj" />
+  </ItemGroup>
+</Project>

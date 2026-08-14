@@ -1,0 +1,5 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>Admiral.Booking.AppCore.Domain</RootNamespace>
+  </PropertyGroup>
+</Project>

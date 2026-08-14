@@ -1,0 +1,45 @@
+@POST http://localhost:5279/api/dev/seed
+Content-Type: application/json
+
+{
+  "voyageCapacity": 2
+}
+
+### Confirm booking A (replace ids from seed)
+@bookingAId = 00000000-0000-0000-0000-000000000000
+@idempotencyKey = 665886cf-e957-4555-b4ca-ad7b6baab8e5
+@correlationId = f1382b1c-4525-4fd5-87cc-90803693a898
+
+POST http://localhost:5279/api/bookings/{{bookingAId}}/confirm
+Idempotency-Key: {{idempotencyKey}}
+X-Correlation-ID: {{correlationId}}
+Content-Type: application/json
+
+{
+  "expectedVersion": null
+}
+
+### Replay the same confirmation (idempotent)
+POST http://localhost:5279/api/bookings/{{bookingAId}}/confirm
+Idempotency-Key: {{idempotencyKey}}
+X-Correlation-ID: {{correlationId}}
+Content-Type: application/json
+
+{}
+
+### Payload conflict: same key, different booking
+@bookingBId = 00000000-0000-0000-0000-000000000001
+POST http://localhost:5279/api/bookings/{{bookingBId}}/confirm
+Idempotency-Key: {{idempotencyKey}}
+Content-Type: application/json
+
+{}
+
+### Get booking
+GET http://localhost:5279/api/bookings/{{bookingAId}}
+
+### Process outbox (after setting Outbox:SimulatePublishFailure)
+POST http://localhost:5279/api/dev/outbox/process
+
+### Health
+GET http://localhost:5279/health
