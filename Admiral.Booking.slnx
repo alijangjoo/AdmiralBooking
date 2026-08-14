@@ -1,4 +1,18 @@
 <Solution>
+  <Folder Name="/docs/">
+    <File Path="docs/ai-assisted-engineering.md" />
+    <File Path="docs/architecture.md" />
+    <File Path="docs/ubiquitous-language.md" />
+  </Folder>
+  <Folder Name="/docs/adr/">
+    <File Path="docs/adr/ADR-001-capacity-concurrency.md" />
+    <File Path="docs/adr/ADR-002-reliable-publication.md" />
+  </Folder>
+  <Folder Name="/docs/diagrams/">
+    <File Path="docs/diagrams/architecture.md" />
+    <File Path="docs/diagrams/booking-confirmation-sequence.md" />
+    <File Path="docs/diagrams/event-storming.md" />
+  </Folder>
   <Folder Name="/src/" />
   <Folder Name="/src/AppCore/">
     <Project Path="src/AppCore/AppServices/Admiral.Booking.AppCore.AppServices.csproj" />
