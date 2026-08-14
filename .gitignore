@@ -1,10 +1,148 @@
-##/.vs/
-**/bin/
-**/obj/
-*.user
-*.suo
-.idea/
-.vscode/
-*.DotSettings.user
-TestResults/
+## Ignore Visual Studio / .NET temporary files, build results, and user-specific files.
+## Based on https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Ww][Ii][Nn]32/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+[Aa][Rr][Mm]64[Ee][Cc]/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
 artifacts/
+.artifacts/
+
+# Visual Studio cache / options
+.vs/
+.vshistory/
+**/.localhistory/
+Generated\ Files/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+*.env
+
+# JetBrains Rider
+.idea/
+*.DotSettings.user
+
+# VS Code (keep shared settings if added later)
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# MSTest / VSTest / coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.trx
+TestResult.xml
+nunit-*.xml
+*.VisualState.xml
+*.received.*
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+*.dotCover
+BenchmarkDotNet.Artifacts/
+
+# .NET / NuGet
+project.lock.json
+project.fragment.lock.json
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nupkg
+*.snupkg
+*.nuget.props
+*.nuget.targets
+
+# Publish / deploy (may contain connection strings)
+publish/
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.publishproj
+PublishScripts/
+
+# MSBuild / compiler leftovers
+*.ilk
+*.meta
+*.obj
+*.idb
+*.iobj
+*.pch
+*.pdb
+*.ipdb
+*.pgc
+*.pgd
+*.rsp
+!Directory.Build.rsp
+*.sbr
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.tlog
+*.binlog
+MSBuild_Logs/
+*.cache
+*.dbmdl
+*.jfm
+
+# Visual C++ / profiler / cache DBs
+ipch/
+*.aps
+*.ncb
+*.opendb
+*.opensdf
+*.sdf
+*.cachefile
+*.VC.db
+*.VC.VC.opendb
+*.psess
+*.vsp
+*.vspx
+*.sap
+
+# ReSharper / NCrunch / other add-ins
+_ReSharper*/
+*.[Rr]e[Ss]harper
+_NCrunch_*
+.NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+*.GhostDoc.xml
+
+# SQL Server local files
+*.mdf
+*.ldf
+*.ndf
+
+# ASP.NET
+ScaffoldingReadMe.txt
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Node (if frontend tooling is added later)
+node_modules/
